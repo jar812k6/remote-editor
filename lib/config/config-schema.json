@@ -1,0 +1,189 @@
+{
+  "config": {
+    "title": "Encrypted Connection",
+    "description": "This are the encrypted connection information about your servers. Don't edit this!",
+    "type": "string",
+    "default": "",
+    "order": 1
+  },
+  "password": {
+    "title": "Encrypted Password",
+    "description": "This is the encrypted password. Don't edit this!",
+    "type": "string",
+    "default": "",
+    "order": 2
+  },
+  "allowedConsumers": {
+    "title": "Whitelisted Consumers (encrypted)",
+    "description": "You can clear this to disallow access to your server configuration for all third-party packages.",
+    "type": "string",
+    "default": "",
+    "order": 3
+  },
+  "disallowedConsumers": {
+    "title": "Blacklisted Consumers (encrypted)",
+    "description": "You can clear this to allow all third-party packages to request access to your server configuration.",
+    "type": "string",
+    "default": "",
+    "order": 4
+  },
+  "tree": {
+    "type": "object",
+    "title": "Tree View",
+    "properties": {
+      "toggleOnStartup": {
+        "title": "Open On Startup",
+        "description": "Open the view automatically when atom starts.",
+        "type": "boolean",
+        "default": false,
+        "order": 1
+      },
+      "showInDock": {
+        "title": "Open In Atom Dock",
+        "description": "Open the view as tab in atom dock instead of panel. Only available from Atom 1.17.0.",
+        "type": "boolean",
+        "default": true,
+        "order": 2
+      },
+      "showOnRightSide": {
+        "title": "Show On Right Side",
+        "description": "Show the view on the right side of the editor instead of the left.",
+        "type": "boolean",
+        "default": true,
+        "order": 3
+      },
+      "allowPendingPaneItems": {
+        "title": "Allow Pending Pane Items",
+        "description": "Allow items to be previewed without adding them to a pane permanently, such as when single clicking files in the tree view.",
+        "type": "boolean",
+        "default": false,
+        "order": 4
+      },
+      "hideIgnoredNames": {
+        "title": "Hide Ignored Files",
+        "description": "Don't show items matched by the `Ignored Names` core config setting.",
+        "type": "boolean",
+        "default": false,
+        "order": 5
+      },
+      "showHiddenFiles": {
+        "title": "Show Hidden Files",
+        "description": "Force FTP Server to show hidden files (e.g. htaccess).",
+        "type": "boolean",
+        "default": false,
+        "order": 6
+      },
+      "sortFoldersBeforeFiles": {
+        "title": "Sort Folders Before Files",
+        "description": "When listing directory items, list subdirectories before listing files.",
+        "type": "boolean",
+        "default": true,
+        "order": 7
+      },
+      "sortServerProfilesByName": {
+        "title": "Sort Servers By Name",
+        "description": "When listing servers items, list servers by name rather than by host.",
+        "type": "boolean",
+        "default": true,
+        "order": 8
+      },
+      "autoRevealActiveFile": {
+        "title": "Auto Reveal Active File",
+        "description": "Auto reveal the current active file on the tree view.",
+        "type": "boolean",
+        "default": true,
+        "order": 9
+      }
+    },
+    "order": 5
+  },
+  "transfer": {
+    "type": "object",
+    "title": "File Transfer",
+    "properties": {
+      "defaultDownloadPath": {
+        "title": "Default Download Path",
+        "description": "Default download path for folders and files. (downloads, desktop, project or path on filesystem)",
+        "type": "string",
+        "default": "downloads",
+        "order": 1
+      },
+      "defaultUploadPath": {
+        "title": "Default Upload Path",
+        "description": "Default upload path for folders and files. (downloads, desktop, project or path on filesystem)",
+        "type": "string",
+        "default": "desktop",
+        "order": 2
+      }
+    },
+    "order": 6
+  },
+  "finder": {
+    "type": "object",
+    "title": "Tree View Finder",
+    "properties": {
+      "filterKeyForItem": {
+        "title": "Key For Search",
+        "description": "Specifies the key at which the search is to be used.",
+        "type": "string",
+        "default": "Filename",
+        "enum": [{
+            "value": "Filename",
+            "description": "Filename"
+          },
+          {
+            "value": "Path",
+            "description": "Path + Filename"
+          }
+        ],
+        "order": 1
+      },
+      "ignoredNames": {
+        "title": "Ignored Names",
+        "description": "List of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29). Files and directories matching these patterns and the `Ignored Names` core config setting will be ignored during indexing.",
+        "type": "array",
+        "default": [".git", "vendor", "node_modules"],
+        "items": {
+          "type": "string"
+        },
+        "order": 2
+      }
+    },
+    "order": 7
+  },
+  "notifications": {
+    "type": "object",
+    "title": "Notification",
+    "properties": {
+      "showNotificationOnUpload": {
+        "title": "Successful Upload",
+        "description": "Show notification on successful upload.",
+        "type": "boolean",
+        "default": true,
+        "order": 1
+      },
+      "openProtocolViewOnError": {
+        "title": "Failed Upload",
+        "description": "Open protocol view in case of failed upload.",
+        "type": "boolean",
+        "default": true,
+        "order": 2
+      }
+    },
+    "order": 8
+  },
+  "dev": {
+    "type": "object",
+    "title": "Development",
+    "properties": {
+      "debug": {
+        "title": "Debug Mode",
+        "description": "Output debug messages to the console.",
+        "type": "boolean",
+        "default": false,
+        "order": 1
+      }
+    },
+    "order": 9
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "menu": [{
+    "label": "Packages",
+    "submenu": [{
+      "label": "Remote-Editor",
+      "submenu": [{
+        "label": "Toggle",
+        "command": "remote-editor:toggle"
+      }]
+    }]
+  }],
+
+  "context-menu": {
+    ".remote-editor-view": [{
+        "label": "Toggle",
+        "command": "remote-editor:toggle"
+      },
+      {
+        "label": "Edit Servers",
+        "command": "remote-editor:edit-servers"
+      }
+    ],
+
+    ".remote-editor-list.full-menu .selected.server, .remote-editor-list.full-menu .selected.directory, .remote-editor-list.full-menu .selected.file": [
+      {
+        "label": "New File",
+        "command": "remote-editor:new-file"
+      },
+      {
+        "label": "New Folder",
+        "command": "remote-editor:new-directory"
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "label": "Upload File(s)",
+        "command": "remote-editor:upload-file"
+      },
+      {
+        "label": "Upload Directory",
+        "command": "remote-editor:upload-directory"
+      },
+      {
+        "label": "Download",
+        "command": "remote-editor:download"
+      }
+    ],
+
+    ".remote-editor-list.full-menu .selected.server": [
+      {
+        "type": "separator"
+      },
+      {
+        "label": "Paste",
+        "command": "remote-editor:paste"
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "label": "Find Remote Path",
+        "command": "remote-editor:find-remote-path"
+      },
+      {
+        "label": "Fuzzy File Finder",
+        "command": "remote-editor:finder"
+      },
+      {
+        "type": "separator"
+      }
+    ],
+
+    ".remote-editor-list.full-menu .selected.server.temp": [
+      {
+        "type": "separator"
+      },
+      {
+        "label": "Add Temporary Server",
+        "command": "remote-editor:add-temp-server"
+      },
+      {
+        "label": "Remove Temporary Server",
+        "command": "remote-editor:remove-temp-server"
+      },
+      {
+        "type": "separator"
+      }
+    ],
+
+    ".remote-editor-list.full-menu .selected.directory.expanded": [
+      {
+        "label": "Reload",
+        "command": "remote-editor:reload"
+      }
+    ],
+
+    ".remote-editor-list.full-menu .selected.directory": [
+      {
+        "type": "separator"
+      },
+      {
+        "label": "Rename",
+        "command": "remote-editor:rename"
+      },
+      {
+        "label": "Delete",
+        "command": "remote-editor:delete"
+      },
+      {
+        "label": "Cut",
+        "command": "remote-editor:cut"
+      },
+      {
+        "label": "Paste",
+        "command": "remote-editor:paste"
+      },
+      {
+        "label": "Permissions",
+        "command": "remote-editor:chmod"
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "label": "Copy Remote Path",
+        "command": "remote-editor:copy-remote-path"
+      },
+      {
+        "label": "Find Remote Path",
+        "command": "remote-editor:find-remote-path"
+      },
+      {
+        "label": "Fuzzy File Finder",
+        "command": "remote-editor:finder"
+      },
+      {
+        "type": "separator"
+      }
+    ],
+
+    ".remote-editor-list.full-menu .selected.file.open": [
+      {
+        "label": "Reload",
+        "command": "remote-editor:reload"
+      }
+    ],
+
+    ".remote-editor-list.full-menu .selected.file": [
+      {
+        "type": "separator"
+      },
+      {
+        "label": "Rename",
+        "command": "remote-editor:rename"
+      },
+      {
+        "label": "Duplicate",
+        "command": "remote-editor:duplicate"
+      },
+      {
+        "label": "Delete",
+        "command": "remote-editor:delete"
+      },
+      {
+        "label": "Copy",
+        "command": "remote-editor:copy"
+      },
+      {
+        "label": "Cut",
+        "command": "remote-editor:cut"
+      },
+      {
+        "label": "Paste",
+        "command": "remote-editor:paste"
+      },
+      {
+        "label": "Permissions",
+        "command": "remote-editor:chmod"
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "label": "Copy Remote Path",
+        "command": "remote-editor:copy-remote-path"
+      },
+      {
+        "label": "Find Remote Path",
+        "command": "remote-editor:find-remote-path"
+      },
+      {
+        "label": "Fuzzy File Finder",
+        "command": "remote-editor:finder"
+      },
+      {
+        "type": "separator"
+      }
+    ]
+  }
+}

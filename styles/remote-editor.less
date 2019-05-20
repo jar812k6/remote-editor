@@ -1,0 +1,802 @@
+// The ui-variables file is provided by base themes provided by Atom.
+//
+// See https://github.com/atom/atom-dark-ui/blob/master/stylesheets/ui-variables.less
+// for a full listing of what's available.
+@import "ui-variables";
+
+.remote-finder .list-group .character-match {
+  color: @text-color-highlight;
+  font-weight: bold;
+}
+
+.remote-editor-view {
+  background-tip ul.background-message {
+    font-weight: 500;
+    font-size: 2em;
+    color: rgba(168, 168, 168, 0.2);
+  }
+
+  &.remote-editor-resizer {
+    overflow: hidden;
+    cursor: default;
+    -webkit-user-select: none;
+    min-width: 200px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    // use these classes to re-order
+    // using a value in-between is fine too, e.g. order: -3;
+    & > .order--start {
+      order: -10;
+    }
+
+    & > .order--center {
+      order: 0;
+    }
+
+    & > .order--end {
+      order: 10;
+    }
+
+    & > .remote-editor-resize-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      cursor: col-resize;
+      z-index: 3;
+    }
+
+    &[data-show-on-right-side='true'] {
+      & > .remote-editor-resize-handle {
+        left: -2px;
+      }
+    }
+
+    &[data-show-on-right-side='false'] {
+      & > .remote-editor-resize-handle {
+        right: -2px;
+      }
+    }
+  }
+
+  .remote-editor-scroller {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 27px;
+  }
+
+  .remote-editor-queue {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    height: 27px;
+    border-top: 1px solid @base-border-color;
+
+    & > .list {
+      display: block;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      & > li {
+        display: block;
+        margin: 0;
+        padding: 2px 8px;
+        line-height: 10px;
+        font-size: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:first-of-type {
+          padding-top: 4px;
+          padding-bottom: 4px;
+          font-size: 11px;
+          line-height: 18px;
+        }
+      }
+    }
+
+    & > .remote-editor-resize-handle {
+      position: absolute;
+      top: -2px;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      display: block;
+      height: 4px;
+      cursor: row-resize;
+    }
+  }
+
+  .remote-editor-list {
+    flex-grow: 1;
+    flex-shrink: 0;
+    /*
+     * Force a new stacking context to prevent a large, duplicate paint layer from
+     * being created for tree-view's scrolling contents that can make the cost of
+     * layer tree updates scale at 3x the size of the layer rather than the
+     * optimal 1x.
+     *
+     * On high resolution displays, Chromium handles layers for scrolling content
+     * differently and inadvertently creates a duplicate paint layer the size of
+     * .tree-view-scroller because descendants of the scroller overlap the
+     * auto-created layer.
+     */
+    isolation: isolate;
+    min-width: -webkit-min-content;
+    padding-left: @component-icon-padding;
+    padding-right: @component-padding;
+    position: relative;
+
+    .project-root.project-root:before {
+      height: 2.5em;
+      border-top: 1px solid transparent;
+      background-clip: padding-box;
+    }
+
+    .project-root.project-root > .header .name {
+      line-height: 2.5em;
+    }
+
+    .header {
+      position: relative;
+
+      &:before {
+        vertical-align: inherit !important;
+      }
+    }
+
+    .server {
+      -webkit-user-drag: none;
+
+      > .project-root-header {
+        -webkit-user-drag: none !important;
+      }
+    }
+
+    .directory {
+      -webkit-user-drag: element;
+    }
+
+    .file {
+      -webkit-user-drag: element;
+    }
+
+    .list-tree {
+      position: static;
+    }
+
+    .selected:before {
+      //   background: @tree-view-background-selected-color;
+    }
+
+    .entry {
+      // This fixes #110, see that issue for more details
+      &::before {
+        content: '';
+        position: absolute;
+      }
+    }
+    /* Drag and Drop */
+    .placeholder {
+      position: absolute;
+      left: @component-icon-padding;
+      padding: 0;
+      z-index: 999;
+      display: inline-block;
+      width: calc(~"100% -" @component-icon-padding);
+      background: @background-color-info;
+      list-style: none;
+      pointer-events: none;
+      // bar
+      &:before {
+        content: "";
+        position: absolute;
+        height: 2px;
+        margin: -1px;
+        padding: 0;
+        width: inherit;
+        background: inherit;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        margin-top: -2px;
+        margin-left: -1px;
+        width: 4px;
+        height: 4px;
+        background: @background-color-info;
+        border-radius: 4px;
+        border: 1px solid transparent;
+      }
+      // ensure that placeholder doesn't disappear above the top of the view
+      &:first-child {
+        margin-top: 1px;
+      }
+    }
+
+    &::before {
+      content: "";
+      position: fixed;
+      pointer-events: none;
+      z-index: 1;
+      margin-top: 0;
+      margin-left: -10px;
+      height: 2.5em;
+      width: 2px;
+      background: #568af2;
+      opacity: 0;
+      transition: opacity 0.16s;
+    }
+
+    &:focus::before {
+      opacity: 1;
+      transition-duration: 0.32s;
+    }
+  }
+
+  .platform-win32 {
+    .tree-view-resizer {
+      .tree-view-resize-handle {
+        cursor: ew-resize;
+      }
+    }
+  }
+}
+
+.remote-editor.settings-view {
+  .panels {
+    background-color: inherit;
+    .checkbox {
+      padding-left: 2.5em;
+    }
+    .panels-content {
+      .server, .server-settings {
+        float: left;
+        clear: both;
+        width: 100%;
+      }
+      .server-settings {
+        overflow: auto;
+      }
+    }
+  }
+
+  .folder {
+    height: 30px;
+
+    .controls.folder {
+      float: left;
+      width: 78%;
+    }
+
+    .controls.folder-button {
+      float: right;
+      width: 22%;
+      padding-left: 1%;
+      text-align: left;
+    }
+
+    .controls.folder-button::after {
+      clear: both;
+    }
+  }
+
+  .server {
+    height: 30px;
+
+    .controls.server {
+      float: left;
+      width: 54%;
+    }
+
+    .controls.server-button {
+      float: right;
+      width: 46%;
+      padding-left: 1%;
+      text-align: left;
+    }
+  }
+
+  .server-settings {
+    .controls.name {
+      float: left;
+      width: 54%;
+    }
+
+    .controls.folder {
+      float: left;
+      width: 36%;
+      padding-left: 1%;
+    }
+
+    .controls.folder-button {
+      margin-top: 26px;
+      padding-left: 1%;
+      float: right;
+      width: 10%;
+    }
+
+    .controls.host {
+      float: left;
+      width: 90%;
+    }
+
+    .controls.port {
+      float: right;
+      width: 10%;
+      padding-left: 1%;
+    }
+  }
+
+  .control-group {
+    clear: both;
+    width: 100%;
+
+    .controls {
+      margin-bottom: 0.75em;
+    }
+
+    atom-text-editor.form-control {
+      overflow: hidden !important;
+      margin-bottom: 0px;
+    }
+  }
+
+  select.form-control {
+    padding-left: 5px;
+  }
+}
+
+.remote-editor.permissions-view {
+  .control-group {
+    .controls.checkbox {
+      .control input:disabled {
+        background-color: #373737 !important;
+      }
+
+      .control:nth-child(1) {
+        width: 43%;
+      }
+
+      .control:nth-child(2) {
+        width: 43%;
+      }
+
+      .control:nth-child(3) {
+        width: 14%;
+      }
+    }
+  }
+}
+
+.remote-editor-protocol {
+  overflow: auto;
+
+  .remote-editor-protocol-table {
+    width: 100%;
+    color: @text-color;
+    font-size: @font-size;
+    border: 0;
+
+    thead {
+      background-color: @base-background-color;
+    }
+
+    tbody {
+      background-color: @inset-panel-background-color;
+    }
+
+    td,
+    th {
+      padding: 3px 10px;
+    }
+
+    td {
+      // min-width: 100px;
+    }
+
+    th {
+      border-right: 1px solid @base-border-color;
+      border-bottom: 1px solid @base-border-color;
+    }
+  }
+}
+
+.loader {
+  position: absolute;
+  left: -23px;
+  top: 0;
+  border: 3px solid @button-background-color-hover;
+  border-top: 3px solid @text-color;
+  border-radius: 50%;
+  width: @component-icon-size;
+  height: @component-icon-size;
+}
+
+.spin::before {
+  animation: spin 0.9s infinite linear;
+  text-align: center;
+  font-family: 'Octicons Regular' !important;
+  content: "\f087" !important;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Default Themes
+.theme-one-dark-ui {
+  .remote-editor-view:focus {
+    .remote-editor-list {
+      .selected:before {
+        background: #4d78cc;
+      }
+    }
+  }
+
+  .remote-editor-view {
+    .remote-editor-list:focus {
+      .selected:before {
+        background: #4d78cc;
+      }
+    }
+    .remote-editor-list {
+      .server.temp {
+        & > .list-item {
+          color: #e2c08d;
+        }
+      }
+    }
+  }
+
+  .remote-editor.settings-view {
+    .form-control {
+      font-size: 1.2em;
+    }
+
+    .control-group {
+      select.form-control {
+        background-color: #171717;
+        color: #dbdbdb;
+      }
+      atom-text-editor.form-control {
+        font-family: inherit;
+        max-height: inherit;
+      }
+    }
+
+    .form-control.disabled {
+      cursor: not-allowed;
+      background-color: #373737 !important;
+      color: rgba(168, 168, 168, 0.6) !important;
+    }
+
+    atom-text-editor.disabled {
+      .editor-contents--private {
+        cursor: default;
+      }
+
+      &.is-focused {
+        border-color: #181818 !important;
+        box-shadow: inherit !important;
+
+        .cursor {
+          opacity: 0 !important;
+        }
+      }
+
+      .placeholder-text {
+        color: rgba(168, 168, 168, 0.6) !important;
+      }
+    }
+
+    select.form-control:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #568af2;
+      border-color: #1c2129;
+      border-radius: 3px;
+      margin-left: 2px;
+      margin-right: 2px;
+      padding-left: 3px;
+    }
+  }
+
+  .overlay, atom-panel.modal {
+    z-index: 999;
+  }
+}
+
+.theme-one-light-ui {
+  .remote-editor-view {
+    background-tip ul.background-message {
+      color: #444;
+    }
+  }
+
+  .remote-editor-view:focus {
+    .remote-editor-list {
+      .selected:before {
+        background: #5a8ae9;
+      }
+      .selected > .name, .selected > .list-item > .name {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .remote-editor-view {
+    .remote-editor-list:focus {
+      .selected:before {
+        background: #5a8ae9;
+      }
+      .selected > .name, .selected > .list-item > .name {
+        color: #ffffff;
+      }
+    }
+    .remote-editor-list {
+      .server.temp {
+        & > .list-item {
+          color: #d5880b;
+        }
+      }
+    }
+  }
+
+  .remote-editor.settings-view {
+    .form-control {
+      font-size: 1.2em;
+    }
+
+    .control-group {
+      select.form-control {
+        background-color: #f5f5f5;
+        color: #333333;
+      }
+      atom-text-editor.form-control {
+        font-family: inherit;
+        max-height: inherit;
+      }
+    }
+
+    .form-control.disabled {
+      cursor: not-allowed;
+      background-color: #f5f5f5 !important;
+      color: rgba(168, 168, 168, 0.6) !important;
+    }
+
+    atom-text-editor.disabled {
+      .editor-contents--private {
+        cursor: default;
+      }
+
+      &.is-focused {
+        border-color: #181818 !important;
+        box-shadow: inherit !important;
+
+        .cursor {
+          opacity: 0 !important;
+        }
+      }
+
+      .placeholder-text {
+        color: rgba(168, 168, 168, 0.6) !important;
+      }
+    }
+
+    select.form-control:focus {
+      outline: none;
+      box-shadow: 0 0 0 1px #5282e0;
+      border-color: #5282e0;
+      border-radius: 3px;
+      background-color: #ebf1ff;
+      margin-left: 2px;
+      margin-right: 2px;
+      padding-left: 3px;
+    }
+  }
+
+  .overlay, atom-panel.modal {
+    z-index: 999;
+  }
+}
+
+.theme-atom-dark-ui {
+  .remote-editor-view {
+    background: #303030;
+
+    .selected:before {
+      background: #444;
+      box-shadow: inset -3px 0 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .remote-editor-list {
+      .server.temp {
+        & > .list-item {
+          color: #ff982d;
+        }
+      }
+    }
+  }
+
+  .remote-editor.settings-view {
+    .form-control {
+      font-size: 1.2em;
+    }
+
+    .control-group {
+      select.form-control {
+        background-color: #212224;
+        color: #fff;
+      }
+      atom-text-editor.form-control {
+        font-family: inherit;
+        line-height: inherit;
+        max-height: inherit;
+      }
+    }
+
+    .form-control.disabled {
+      cursor: not-allowed;
+      background-color: #373737 !important;
+      color: rgba(168, 168, 168, 0.6) !important;
+    }
+
+    atom-text-editor.disabled {
+      .editor-contents--private {
+        cursor: default;
+      }
+
+      &.is-focused {
+        border-color: #181818 !important;
+        box-shadow: inherit !important;
+
+        .cursor {
+          opacity: 0 !important;
+        }
+      }
+
+      .placeholder-text {
+        color: rgba(168, 168, 168, 0.6) !important;
+      }
+    }
+
+    select.form-control:focus {
+      background-color: #2d2f31;
+    }
+  }
+  .overlay, atom-panel.modal {
+    z-index: 999;
+  }
+}
+
+.theme-atom-light-ui {
+  .remote-editor-view {
+    background-tip ul.background-message {
+      color: #333333;
+    }
+
+    .selected:before {
+      background: #d0d0d0;
+    }
+
+    .remote-editor-list {
+      .server.temp {
+        & > .list-item {
+          color: #CD8E00;
+        }
+      }
+    }
+  }
+
+  .remote-editor.settings-view {
+    .form-control {
+      font-size: 1.2em;
+    }
+
+    .control-group {
+      select.form-control {
+        background-color: #fcfcfc;
+        color: #6a6a6a;
+      }
+      atom-text-editor.form-control {
+        font-family: inherit;
+        line-height: inherit;
+        max-height: inherit;
+      }
+    }
+
+    .form-control.disabled {
+      cursor: not-allowed;
+      background-color: #f5f5f5 !important;
+      color: rgba(168, 168, 168, 0.6) !important;
+    }
+
+    atom-text-editor.disabled {
+      .editor-contents--private {
+        cursor: default;
+      }
+
+      &.is-focused {
+        border-color: #181818 !important;
+        box-shadow: inherit !important;
+
+        .cursor {
+          opacity: 0 !important;
+        }
+      }
+
+      .placeholder-text {
+        color: rgba(168, 168, 168, 0.6) !important;
+      }
+    }
+
+    select.form-control:focus {
+      color: #444;
+      background-color: white;
+      border-color: rgba(159, 159, 159, 0.9);
+    }
+  }
+  .overlay, atom-panel.modal {
+    z-index: 999;
+  }
+}
+
+.theme-atom-material-ui {
+  atom-panel.modal {
+    overflow: visible;
+  }
+
+  .remote-editor-view {
+    .selected:before {
+      background: #009688;
+    }
+
+    .remote-editor-list {
+      .server.temp {
+        & > .list-item {
+          color: #FFCA28;
+        }
+      }
+    }
+  }
+
+  .remote-editor.settings-view {
+    .form-control {
+      font-size: 1.2em;
+      border: none;
+      height: inherit;
+    }
+
+    .control-group {
+      atom-text-editor.form-control {
+        font-family: inherit;
+        line-height: inherit;
+        max-height: inherit;
+      }
+    }
+  }
+  .permissions-view {
+    .checkbox {
+      padding-left: 0px;
+    }
+  }
+}

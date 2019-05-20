@@ -1,0 +1,24 @@
+'atom-text-editor, atom-workspace':
+  'ctrl-space': 'remote-editor:toggle',
+  'ctrl-alt-p': 'remote-editor:finder',
+  'ctrl-alt-space': 'remote-editor:toggle-focus'
+
+'.platform-darwin .remote-editor-view':
+  'cmd-c': 'remote-editor:copy'
+  'cmd-x': 'remote-editor:cut'
+  'cmd-v': 'remote-editor:paste'
+
+'.platform-win32 .remote-editor-view, .platform-linux .remote-editor-view':
+  'ctrl-c': 'remote-editor:copy'
+  'ctrl-x': 'remote-editor:cut'
+  'ctrl-v': 'remote-editor:paste'
+
+'.remote-editor-view':
+  'escape': 'remote-editor:unfocus'
+  'm': 'remote-editor:rename'
+  'f2': 'remote-editor:rename'
+  'a': 'remote-editor:new-file'
+  'shift-a': 'remote-editor:new-directory'
+  'd': 'remote-editor:duplicate'
+  'delete': 'remote-editor:delete'
+  'backspace': 'remote-editor:delete'
