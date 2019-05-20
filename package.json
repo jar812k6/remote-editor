@@ -1,7 +1,7 @@
 {
   "name": "remote-editor",
   "main": "./lib/remote-editor",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Edit files remotely on your ftp/sftp(ssh) server without a project. All connection information is encrypted.",
   "keywords": [
     "ftp",
