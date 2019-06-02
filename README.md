@@ -2,6 +2,7 @@
 
 Cloned via h3imdall/ftp-remote-edit and slightly customized to aid in transitioning from CodeAnywhere to Atom.
 
+- Sound clip played on successful file upload or directory upload.
 - Increased FTP transfer timeout to 300 seconds to allow large file uploads.
 - Double-click trigger to open files or expand folders.
 - Sound clip played on successful file save.
