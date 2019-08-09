@@ -1,7 +1,7 @@
 {
   "name": "remote-editor",
   "main": "./lib/remote-editor",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Edit files remotely on your ftp/sftp(ssh) server without a project. All connection information is encrypted.",
   "keywords": [
     "ftp",
@@ -14,7 +14,7 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {    
+  "dependencies": {
     "atom-select-list": "^0.3.0",
     "atom-space-pen-views": "^2.2.0",
     "basic-ftp": "^3.8.0",
