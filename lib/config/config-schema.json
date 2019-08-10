@@ -57,35 +57,42 @@
         "description": "Allow items to be previewed without adding them to a pane permanently, such as when single clicking files in the tree view.",
         "type": "boolean",
         "default": false,
-        "order": 2
+        "order": 4
       },
       "hideIgnoredNames": {
         "title": "Hide Ignored Files",
         "description": "Don't show items matched by the `Ignored Names` core config setting.",
         "type": "boolean",
         "default": false,
-        "order": 3
+        "order": 5
+      },
+      "showHiddenFiles": {
+        "title": "Show Hidden Files",
+        "description": "Force FTP Server to show hidden files (e.g. htaccess).",
+        "type": "boolean",
+        "default": false,
+        "order": 6
       },
       "sortFoldersBeforeFiles": {
         "title": "Sort Folders Before Files",
         "description": "When listing directory items, list subdirectories before listing files.",
         "type": "boolean",
         "default": true,
-        "order": 4
+        "order": 7
       },
       "sortServerProfilesByName": {
         "title": "Sort Servers By Name",
         "description": "When listing servers items, list servers by name rather than by host.",
         "type": "boolean",
         "default": true,
-        "order": 5
+        "order": 8
       },
       "autoRevealActiveFile": {
         "title": "Auto Reveal Active File",
         "description": "Auto reveal the current active file on the tree view.",
         "type": "boolean",
         "default": true,
-        "order": 6
+        "order": 9
       }
     },
     "order": 5

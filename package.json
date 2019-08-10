@@ -1,7 +1,7 @@
 {
   "name": "remote-editor",
   "main": "./lib/remote-editor",
-  "version": "0.2.4",
+  "version": "0.2.3",
   "description": "Edit files remotely on your ftp/sftp(ssh) server without a project. All connection information is encrypted.",
   "keywords": [
     "ftp",
@@ -12,7 +12,7 @@
   "repository": "https://github.com/jar812k6/remote-editor.git",
   "license": "MIT",
   "engines": {
-    "atom": ">=1.17.0 <2.0.0"
+    "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
     "atom-select-list": "^0.3.0",
