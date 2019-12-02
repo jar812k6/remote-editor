@@ -93,13 +93,6 @@
         "type": "boolean",
         "default": true,
         "order": 9
-      },
-      "dragAndDropConfirmation": {
-        "title": "Drag & Drop Confirmation",
-        "description": "Show dialog to confirm drag & drop action.",
-        "type": "boolean",
-        "default": true,
-        "order": 10
       }
     },
     "order": 5
