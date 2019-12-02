@@ -98,7 +98,7 @@
         "title": "Drag & Drop Confirmation",
         "description": "Show dialog to confirm drag & drop action.",
         "type": "boolean",
-        "default": false,
+        "default": true,
         "order": 10
       }
     },
